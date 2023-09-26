@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import "./SideBar.css"
 import ClayButton from '@clayui/button';
 import ClayLink from "@clayui/link";
 import ClayNavigationBar from "@clayui/navigation-bar";
 import  {useHistory}  from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setActiveLink } from './../sidebarSlice'; // Import your setActiveLink action
-import  store  from './../store'; 
+import { setActiveLink } from './../sidebarSlice'; 
 
-// import { Link } from 'react-router-dom';
-// import { useState } from 'react';
-// import img from './../../../public/Icon.png'
 export default function SideBar() {
     const history = useHistory();
-    // const [active, setActive] = useState("1");
-    const active = useSelector((state:any) => state.sidebar.active); // Replace RootState with your actual RootState type
+    
+    const active = useSelector((state:any) => state.sidebar.active); 
     const dispatch = useDispatch();
     const handleLinkClick = (value:any) => {
         if(value==="1"){
@@ -51,7 +47,7 @@ export default function SideBar() {
     }, [active])
     
     
-    // const [activeSidebar, setactiveSidebar] = useState(0);
+  
     return (
         <div className='sidebardiv'>
             <img className='sidebarimg' src='/Icon.png' alt='logo' />

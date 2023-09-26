@@ -5,24 +5,14 @@ import './CreateIssue.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Project} from './../interface';
 
 const CreateIssue = () => {
 
   const [apiResponse, setApiResponse] = useState(null);
   const [projectOptions, setProjectOptions] = useState<Project[]>([]);
-  interface Project {
-    projectID: string;
-    projectName: string;
-    projectStartDate: string;
-    projectEndDate: string;
-    projectOwner: {
-      id: number;
-      name: string;
-      email: string;
-      teamName: string;
-      desination: string;
-    };
-  }
+
+ 
   const initialValues = {
     summary: '',
     type: '',
@@ -61,6 +51,7 @@ const CreateIssue = () => {
       
     },
   });
+
   const postIssue = async (values:any) => {
     console.log("postIssue acalled");
     try {
@@ -68,23 +59,23 @@ const CreateIssue = () => {
         'https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/issue',
         {
           summary: values.summary,
-          type: values.type, // Parse to integer
+          type: values.type,
           projectID: values.projectID,
           description: values.description,
-          priority: parseInt(values.priority), // Parse to integer
-          status:1, // Parse to integer
-          assignee: parseInt(values.assignee), // Parse to integer
+          priority: parseInt(values.priority), 
+          status:1, 
+          assignee: parseInt(values.assignee), 
           tags: values.tags.split(','),
           sprint: values.sprint,
-          storyPoint: parseInt(values.storyPoint), // Parse to integer
+          storyPoint: parseInt(values.storyPoint), 
         },
         {
-          headers: { userID: '1' }, // Replace with your user ID
+          headers: { userID: '1' }, 
         }
       );
       console.log(JSON.stringify(response.data));
-      setApiResponse(response.data); // Store the API response in state
-      alert(response.data); // Display the
+      setApiResponse(response.data); 
+      alert(response.data); 
       toast.success(apiResponse, {
         position: 'top-right',
         autoClose: 3000,
@@ -92,10 +83,10 @@ const CreateIssue = () => {
         closeOnClick: true,
         pauseOnHover: true,
       });
-      formik.resetForm(); // Reset the form
+      formik.resetForm(); 
     } catch (error) {
       console.error('Error creating issue:', error);
-      setApiResponse(null); // Clear the API response
+      setApiResponse(null); 
       alert('Error creating issue:');
       toast.error("Error try again", {
         position: 'top-right',
@@ -109,12 +100,12 @@ const CreateIssue = () => {
   }
   const handleReset = () => {
     console.log('rest clicked');
-    // formik.values
+   
     console.log('formik.values', formik.values)
     formik.resetForm();
   };
 
-    // Fetch project data for the dropdown options
+   
     useEffect(() => {
       axios.get("https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/project", {
           headers: { userID: "1" },
@@ -173,7 +164,7 @@ const CreateIssue = () => {
               <option className='CIselectOP' value="" disabled hidden>Select</option>
               <option value="1">Type 1</option>
               <option value="2">Type 2</option>
-              {/* Add more type options as needed */}
+             
             </select>
             {formik.touched.type && formik.errors.type ? (
               <div className='error'>{formik.errors.type}</div>
@@ -238,7 +229,7 @@ const CreateIssue = () => {
               <option value="1">LOW</option>
               <option value="2">MEDIUM</option>
               <option value="3">HIGH</option>
-              {/* Add more priority options as needed */}
+             
             </select>
             {formik.touched.priority && formik.errors.priority ? (
               <div className='error'>{formik.errors.priority}</div>
@@ -261,7 +252,7 @@ const CreateIssue = () => {
               <option value="2">Assignee 2</option>
               <option value="3">Assignee 3</option>
               <option value="4">Assignee 4</option>
-              {/* Add more assignee options as needed */}
+             
             </select>
             {formik.touched.assignee && formik.errors.assignee ? (
               <div className='error'>{formik.errors.assignee}</div>
@@ -283,7 +274,7 @@ const CreateIssue = () => {
               <option className='CIselectOP' value="" disabled hidden>Select</option>
               <option value="Tag 1">Tag 1</option>
               <option value="Tag 2">Tag 2</option>
-              {/* Add more tag options as needed */}
+            
             </select>
             {formik.touched.tags && formik.errors.tags ? (
               <div className='error'>{formik.errors.tags}</div>
@@ -306,7 +297,7 @@ const CreateIssue = () => {
               <option className='CIselectOP' value="" disabled hidden>Select</option>
               <option value="Sprint 1">Sprint 1</option>
               <option value="Sprint 2">Sprint 2</option>
-              {/* Add more sprint options as needed */}
+             
             </select>
             {formik.touched.sprint && formik.errors.sprint ? (
               <div className='error'>{formik.errors.sprint}</div>

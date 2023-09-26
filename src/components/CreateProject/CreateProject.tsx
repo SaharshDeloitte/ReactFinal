@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const CreateProject = () => {
   const [apiResponse, setApiResponse] = useState(null);
-  // const [alertMessage, setAlertMessage] = useState("");
+  
 
   const initialValues = {
     projectName: "",
@@ -30,17 +30,17 @@ const CreateProject = () => {
         "https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/project",
         {
           projectName: values.projectName,
-          projectOwner: values.owner, // Assuming owner is an ID
+          projectOwner: values.owner, 
           projectStartDate: values.startDate,
           projectEndDate: values.endDate,
         },
         {
-          headers: { userID: "1" }, // Replace with your user ID
+          headers: { userID: "1" }, 
         }
       );
       setApiResponse(response.data); 
       console.log('response', response)
-      // Store the API response in state
+   
       alert(apiResponse);
       toast.success(apiResponse, {
         position: 'top-right',
@@ -52,7 +52,7 @@ const CreateProject = () => {
       
     } catch (error) {
       console.error("Error posting project:", error);
-      setApiResponse(null); // Clear the API response
+      setApiResponse(null); 
       alert("error try again");
       toast.error(apiResponse, {
         position: 'top-right',
@@ -68,7 +68,7 @@ const CreateProject = () => {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      await postProject(values); // Await the async API function
+      await postProject(values); 
       formik.resetForm();
     },
   });
@@ -123,7 +123,7 @@ const CreateProject = () => {
               </option>
               <option value="1">Anusha Somashekar</option>
               <option value="2">Niharika Guglani</option>
-              {/* Add more owner options as needed */}
+             
             </select>
             {formik.touched.owner && formik.errors.owner ? (
               <div className="error">{formik.errors.owner}</div>

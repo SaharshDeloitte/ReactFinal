@@ -23,7 +23,7 @@ margin: 15rem;
 }
 .loginLoader{
     margin-left: 5rem;
-    /* background-color: aquamarine; */
+    background-color: rgba(29, 31, 30, 0.425);
     position: absolute;         
     top: 30%;
     left: 40%;

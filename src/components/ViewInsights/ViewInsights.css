@@ -35,3 +35,31 @@
     font-size: 52px;
     font-weight: 800;
 }
+
+.VIbar{
+    height: 8rem;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+
+}
+.bar1{
+    background-color: yellow;
+    height: 100%;
+    /* width: 25%; */
+
+}
+.bar2{
+    background-color: orangered;
+    height: 100%;
+}
+.bar3{
+    background-color: blue;
+    height: 100%;
+}
+.bar4{
+    background-color: green;
+    height: 100%;
+}

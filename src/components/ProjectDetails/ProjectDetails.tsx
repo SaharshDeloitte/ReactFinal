@@ -4,68 +4,28 @@ import "./ProjectDetails.css";
 import { useFormik } from "formik";
 import ClayCard from "@clayui/card";
 import { Link } from 'react-router-dom';
-// import ViewInsights from '../ViewInsights/ViewInsights';
-import DragandDrop from "../DragandDrop/DragandDrop";
+
 
 
 import ClayButton from '@clayui/button';
+import {Project,Issue} from './../interface'
 
-interface Project {
-  projectID: string;
-  projectName: string;
-  projectStartDate: string;
-  projectEndDate: string;
-  projectOwner: {
-    id: number;
-    name: string;
-    email: string;
-    teamName: string;
-    desination: string;
-  };
-}
-
-interface Issue {
-  id: string;
-  summary: string;
-  type: number;
-  projectID: string;
-  description: string;
-  priority: number;
-  assignee: {
-    id: number;
-    name: string;
-    email: string;
-    teamName: string;
-    desination: string;
-  };
-  tags: string[];
-  sprint: string;
-  storyPoint: number;
-  status: number;
-  createdBy: any;
-  createdOn: string;
-  updatedBy: {
-    id: number;
-    name: string;
-    email: string;
-    teamName: string;
-    desination: string;
-  };
-  updatedOn: string;
-}
 
 const ProjectDetails: React.FC = () => {
-  // State for project, issues, and filters
+  
   const [projects, setProjects] = useState<Project[]>([]);
+  const [issues, setIssues] = useState<Issue[]>([]);
+
+  const [projectsCreated, setProjectsCreated] = useState(false);
   const [selectedProject, setSelectedProject] = useState("");
   const [selectedProjectDetails, setSelectedProjectDetails] = useState<Project | null>(null);
-  const [issues, setIssues] = useState<Issue[]>([]);
+  
   const [filteredIssues, setFilteredIssues] = useState<Issue[]>([]);
   const [priorityFilter, setPriorityFilter] = useState("");
   const [assigneeFilter, setAssigneeFilter] = useState("");
 
-  // State to track whether projects are created or not
-  const [projectsCreated, setProjectsCreated] = useState(false);
+
+  
   const statusstr=["TO DO","DEVELOPMENT","TESTING","Completed"];
   const prioritystr=["LOW", "MEDIUM","HIGH" ]
   const priorityclr=["green", "yellow", "red"]
@@ -74,9 +34,7 @@ const ProjectDetails: React.FC = () => {
   const [statusColumns, setStatusColumns] = useState<Array<Issue[]>>([]);
   const [draggedCard, setDraggedCard] = useState<Issue | null>(null);
 
-  // Initialize the status columns with issues based on status values
  
-  // Fetch projects and set them in the projects state
   useEffect(() => {
     axios
       .get("https://hu-22-angular-mockapi-urtjok3rza-wl.a.run.app/project", {
@@ -85,7 +43,7 @@ const ProjectDetails: React.FC = () => {
       .then((response) => {
         setProjects(response.data);
 
-        // Check if projects are created
+        
         if (response.data.length === 0) {
           setProjectsCreated(false);
         } else {
@@ -97,7 +55,7 @@ const ProjectDetails: React.FC = () => {
       });
   }, []);
 
-  // Fetch issues for the selected project and set them in the issues state
+  
   useEffect(() => {
     if (selectedProject) {
       axios
@@ -116,13 +74,13 @@ const ProjectDetails: React.FC = () => {
     }
   }, [selectedProject]);
 
-  // Create a Formik instance to manage the form state
+ 
   const formik = useFormik({
     initialValues: {
       selectedProject: "",
     },
     onSubmit: (values) => {
-      // Handle form submission here
+     
     },
   });
 
@@ -134,7 +92,7 @@ const ProjectDetails: React.FC = () => {
     return `${year}-${month}-${day}`;
   };
 
-  // Filter issues based on priority and assignee
+ 
   useEffect(() => {
     let filtered = issues;
     if (priorityFilter) {
@@ -153,25 +111,22 @@ const ProjectDetails: React.FC = () => {
 
   }, [issues, priorityFilter, assigneeFilter]);
 
+
+
   useEffect(() => {
-    // const initialColumns = statusstr.map(() => []);
+   
     let filteredAndSortedIssues = filteredIssues;
     filteredAndSortedIssues.sort((a, b) => a.status - b.status);
 
-    // Initialize an array to hold the status columns
-    // const initialColumns: Array<Array<Issue>> = statusstr.map(() => []);
-
-    // ...
-    
-    // Initialize an array to hold the status columns
+   
     const newStatusColumns: Array<Array<Issue>> = statusstr.map(() => []);
     
-    // Distribute issues into their respective status columns
+    
     filteredAndSortedIssues.forEach((issue) => {
-      const statusIndex = issue.status - 1; // Assuming status is 1-based
+      const statusIndex = issue.status - 1; 
       newStatusColumns[statusIndex].push(issue);
     });
-    // Update the state with the new statusColumns
+   
     setStatusColumns(newStatusColumns);
 
   }, [filteredIssues]);
@@ -181,7 +136,7 @@ const ProjectDetails: React.FC = () => {
     formik.setFieldValue("selectedProject", selectedProjectID);
     setSelectedProject(selectedProjectID);
 
-    // Find the selected project details
+   
     const projectDetail = projects.find(
       (project) => project.projectID === selectedProjectID
     );
@@ -194,7 +149,7 @@ const ProjectDetails: React.FC = () => {
   };
 
 
-// Function to update issue status on the server
+
 const updateIssueStatus = (issueId: string, newStatus: number) => {
   axios
     .put(
@@ -207,7 +162,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
       }
     )
     .then((response) => {
-      // Handle successful status update
+    
     })
     .catch((error) => {
       console.error("Error updating issue status:", error);
@@ -215,7 +170,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
 };
 
 
-  // Function to handle drag-and-drop
+ 
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>, issue: Issue) => {
     console.log("drag start")
@@ -226,15 +181,15 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
     console.log("drag over")
     e.preventDefault();
     if (draggedCard) {
-      // Create a copy of the status columns
+     
       const newStatusColumns = [...statusColumns];
       
-      // Remove the dragged card from its current column
+     
       const sourceColumnIndex = statusColumns.findIndex(column => column.includes(draggedCard));
       const updatedSourceColumn = [...statusColumns[sourceColumnIndex].filter(card => card.id !== draggedCard.id)];
       newStatusColumns[sourceColumnIndex] = updatedSourceColumn;
 
-      // Add the dragged card to the target column
+     
       newStatusColumns[statusIndex].push(draggedCard);
       
       setStatusColumns(newStatusColumns);
@@ -245,11 +200,11 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
     console.log("handle drop")
     e.preventDefault();
     if (draggedCard) {
-      // Update the status of the card using an API call
-      const newStatus = statusIndex + 1; // Assuming your status indices are 0-based
-      // Make an API call to update the status of the card with the newStatus value
+
+      const newStatus = statusIndex + 1; 
+    
       updateIssueStatus(draggedCard.id, newStatus);
-      // Clear the draggedCard state
+      
       setDraggedCard(null);
     }
   };
@@ -274,7 +229,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
      
 
       {projectsCreated ? (
-        // Render the issue tracker when projects are created
+       
         <>
           <form className="proform">
             <div className="form-group">
@@ -328,7 +283,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
                 <option value="1">LOW</option>
                 <option value="2">MEDIUM</option>
                 <option value="3">HIGH</option>
-                {/* Add more priority options as needed */}
+               
               </select>
             </div>
 
@@ -339,8 +294,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
                 onChange={(e) => setAssigneeFilter(e.target.value)}
               >
                 <option value="">All</option>
-                {/* <option value="Anusha Somashekar">Anusha Somashekar</option> */}
-                {/* <option value="Other">Other Assignee</option> */}
+               
                 {issues.map((issue) => (
                       <option key={issue.id} value={issue.assignee.name}>{issue.assignee.name}</option>
                     ))}
@@ -384,6 +338,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
               ))}
             </div>
           </div> */}
+
       <div>
         <h2>Issues:</h2>
         <div className="status-columns">
@@ -395,7 +350,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
               onDrop={(e) => handleDrop(e, statusIndex)}
             >
               <h3>{statusstr[statusIndex]}</h3>
-              {/* {console.log("column",statusColumns)} */}
+             
               {column.map((issue, index) => (
                 <Link to={`/dashboard/issue-details/${issue.id}`} key={index}>
                   <ClayCard
@@ -433,7 +388,7 @@ const updateIssueStatus = (issueId: string, newStatus: number) => {
           
         </>
       ) : (
-        // Render the HTML block when no projects are created
+      
         <div className="mainProjectDetails">
           <div className="pDnone">
             <h1>Welcome to Tracker</h1>

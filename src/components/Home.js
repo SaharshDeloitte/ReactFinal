@@ -5,7 +5,7 @@ import ClayButton from '@clayui/button';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-// import ProjectBoard from './ProjectBoard/ProjectBoard';
+
 
 
 export default withOktaAuth(class Home extends Component {
@@ -14,33 +14,27 @@ export default withOktaAuth(class Home extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
     this.state = {
-      isLoading: false, // Initialize to false
+      isLoading: false, 
     };
   }
 
   async login() {
 
-    this.setState({ isLoading: true }); // Set loading to true
+    this.setState({ isLoading: true }); 
     await this.props.oktaAuth.signInWithRedirect();
     setTimeout(() => {
-      // After 3 seconds, initiate the Okta login redirect
-
-
-      // Set isLoading back to false to hide the loader
+  
       this.setState({ isLoading: false });
     }, 3000);
   }
 
   async logout() {
-    this.setState({ isLoading: true }); // Set loading to true
+    this.setState({ isLoading: true }); 
     console.log("logout context called");
     await this.props.oktaAuth.signOut();
 
     setTimeout(() => {
-      // After 3 seconds, initiate the Okta login redirect
-
-
-      // Set isLoading back to false to hide the loader
+     
       this.setState({ isLoading: false });
     }, 3000);
 

@@ -5,8 +5,7 @@ import { ClayInput } from "@clayui/form";
 import ClayButton from '@clayui/button';
 import DropDown from "@clayui/drop-down";
 import "./Navbar.css";
-// import { useLogout } from './../Home';
-// import { useAuth } from './../AuthContext';
+
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 
 
@@ -21,19 +20,16 @@ const Navbar = () => {
   const logout = async () => {
 
     setisLoading(true);
-    // Will redirect to Okta to end the session then redirect back to the configured `postLogoutRedirectUri`
+  
     // localStorage.removeItem('okta-token-storage');
     // localStorage.removeItem('okta-cache-storage');
     // localStorage.removeItem('okta-shared-transaction-storage');
     
     await oktaAuth.signOut();
     // oktaAuth.tokenManager.clear();
-    // localStorage.clear();
+    localStorage.clear();
     setTimeout(() => {
-        // After 3 seconds, initiate the Okta login redirect
-  
-  
-        // Set isLoading back to false to hide the loader
+       
         setisLoading(false);
       }, 3000);
   };
@@ -43,8 +39,7 @@ const Navbar = () => {
    
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) {
-            // When user isn't authenticated, forget any user info
-            //   setUserInfo(null);
+            
         } else {
 
 
@@ -65,7 +60,7 @@ const Navbar = () => {
 
 
         }
-    }, [authState, oktaAuth]); // Update if authState changes
+    }, [authState, oktaAuth]);
     return (
         <>
             <div className="navbar-container">
@@ -73,7 +68,7 @@ const Navbar = () => {
                     <ClayInput placeholder="Search" />
 
                 </div>
-                {/* <ClayButton onClick={props.logout}>Logout</ClayButton> */}
+               
                 <div className="user">
 
 

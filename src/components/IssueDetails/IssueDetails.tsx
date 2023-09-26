@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-// import ClayButton from '@clayui/button';
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import ClayLoadingIndicator from "@clayui/loading-indicator";
@@ -32,11 +32,11 @@ export default function IssueDetails() {
 
   const validationSchema = Yup.object({
     status: Yup.string().required("Status is required"),
-    // assignee: Yup.string().required('Assignee is required'),
+   
   });
   const validationSchemacmt = Yup.object({
     comment: Yup.string().required("comment is required"),
-    // assignee: Yup.string().required('Assignee is required'),
+    
   });
 
   const formik = useFormik({
@@ -45,9 +45,9 @@ export default function IssueDetails() {
     onSubmit: async (values) => {
       console.log("onsubmit");
       console.log("values", values);
-      //  await postIssue(values);
+     
       updateIssueStatus(issueId, values.status);
-      // alert("Issue status updated!!");
+    
       toast.success("Issue status updated!! ", {
         position: "top-right",
         autoClose: 3000,
@@ -80,10 +80,10 @@ export default function IssueDetails() {
   });
 
   useEffect(() => {
-    // setTimeout( () => {
+    
     getissues();
 
-    // },4000);
+   
   }, [issueId]);
   useEffect(() => {
     console.log("issue", issue);
@@ -102,8 +102,7 @@ export default function IssueDetails() {
       .then((response) => {
         setissue(response.data);
         setdata(true);
-        // initialValues.status=response.data.status;
-        // Check if projects are created
+        
       })
       .catch((error) => {
         console.error("Error fetching issue:", error);
@@ -130,7 +129,6 @@ export default function IssueDetails() {
       });
   };
 
-  // Function to update issue status on the server
   const updateIssueStatus = (issueId: string, newStatus: string) => {
     axios
       .put(
@@ -143,7 +141,7 @@ export default function IssueDetails() {
         }
       )
       .then((response) => {
-        // Handle successful status update
+       
         alert("issue Status updated successfully");
       })
       .catch((error) => {
@@ -199,7 +197,7 @@ export default function IssueDetails() {
             <h5>Description:</h5>
             <p>{issue?.description}</p>
           </div>
-          {/* <hr /> */}
+        
           <div className="detail">
             <hr />
             <h2>Details</h2>
@@ -298,7 +296,7 @@ export default function IssueDetails() {
                 <option value="2">Development</option>
                 <option value="3">Testing</option>
                 <option value="4">Completed</option>
-                {/* Add more priority options as needed */}
+               
               </select>
               {formik.touched.status && formik.errors.status ? (
                 <div className="error">{formik.errors.status}</div>
