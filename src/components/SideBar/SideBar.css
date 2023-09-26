@@ -1,0 +1,130 @@
+.sidebardiv{
+    background-color: #1D262D;
+    width: 20%;
+    min-width: 200px;
+    height: 100vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10rem;
+}
+.sidebarimg{
+    margin-top: 2rem;
+    /* margin-left: 2rem; */
+}
+ .sidebarul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: left;
+    flex-wrap: nowrap;
+    width: 100%;
+    background-color: transparent;
+    margin: 0%;
+    border: none;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.sidebarbtn{
+    width: 15rem;
+
+    height: 3.5rem;
+    background-color: #28343E;
+    border: none;
+    text-align: left;
+    border-radius: 0 6px 6px 0  ;
+    color: white !important;
+    cursor: pointer;
+}
+
+.sidebarbtn2{
+    width: 16rem;
+    height: 3rem;
+    background-color: #28343E;
+    border: none;
+
+}
+.sidebarul .navbar-nav .nav-item .nav-link.active {
+    text-decoration: none!important;
+    color: #FE7912!important;
+    
+    /* text-decoratio; */
+  }
+.sidebarul .navbar-nav .nav-item .nav-link.active::before {
+    content: '';
+    /* display: block; */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 5px; /* Adjust the width as needed */
+    height: 100%;
+    background-color: #FE7912; /* Adjust the color as needed */
+    color: #FE7912;
+    border-radius: 12px 0 0 12px;
+  }
+  .navigation-bar-light.navbar-expand-md.navbar-underline .navbar-nav .nav-link.active::after {
+    background-color: transparent;
+  }
+  .navigation-bar .navbar-nav .nav-link, .navigation-bar .navbar-nav .navbar-text {
+    padding: 1rem .8rem;
+    margin: 1rem 0;
+
+  }
+ 
+  .navigation-bar .navbar-nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+/*
+.sidebarul span {
+    display: flex;
+    width: 15rem;
+    justify-content: flex-end;
+
+   
+}
+.sidebarhr{
+    display: none;
+    height: 3rem;
+    width: 5px;
+    background-color: #FE7912;
+    border-radius: 12px 0 0 12px ;
+}
+.sidebaractive{
+    display: block;
+    background-color: #FE7912;
+    color: #FE7912;
+}
+
+
+.sidebarRadio{
+    width: 13rem;
+    height: 3rem;
+    width: 13rem;
+    height: 3rem;
+    background-color: #28343E;
+   
+    text-align: left;
+    border-radius: 0 6px 6px 0  ;
+} */
+
+
+
+  /* @media screen and (max-width: 768px) {
+    .sidebar{
+    width: 100%;
+
+    min-width: 0;
+
+    transform: translateX(-100%);
+
+    &.active {
+      transform: translateX(0);
+    }
+  }
+  } */

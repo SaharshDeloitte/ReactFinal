@@ -1,0 +1,11 @@
+.mainContainer{
+    /* --nav:5rem; */
+    display: block;
+    position: absolute;
+    top: 5rem;
+    left: 20%;
+    /* background-color: aquamarine; */
+    width: calc(100% - 20%);
+    height: calc(100% - 5rem);
+    padding: 1rem 2rem 0rem 2rem;
+}

@@ -1,0 +1,32 @@
+.loginDiv{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+
+}
+.loginLeft .loginRight{
+    width: 45%;
+  
+    
+}
+.Buttons{
+margin: 15rem;
+}
+.Buttons button{
+    width: 15rem;
+    height: 3rem;
+    background-color: aquamarine;
+    border: 1px solid white;
+    color: black;
+}
+.loginLoader{
+    margin-left: 5rem;
+    /* background-color: aquamarine; */
+    position: absolute;         
+    top: 30%;
+    left: 40%;
+    width: 10rem;
+    height: 10rem;
+}
