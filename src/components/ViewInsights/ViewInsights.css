@@ -1,0 +1,37 @@
+.VImain{
+    display: flex;
+    flex-direction: column;
+}
+
+.VIhead{
+    display: flex;
+    margin: 4rem 0;
+    flex-direction: column;
+    gap: 2rem;
+   
+
+}
+.VIdata{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    /* flex-direction: column; */
+    margin: 5rem 0;
+    border: 1px solid black;
+    height: 10rem;
+    width: 80%;
+}
+.VIdata span{
+    width: 25%;
+    font-size: 32px!important;
+
+}
+.VIdata h4{
+    font-size: 24px;
+}
+.VIdata p{
+    font-size: 52px;
+    font-weight: 800;
+}

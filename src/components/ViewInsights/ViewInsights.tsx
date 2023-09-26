@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-
+import './ViewInsights.css'
 // import { toast } from 'react-toastify';
 import ClayLoadingIndicator from '@clayui/loading-indicator';
 
@@ -133,16 +133,19 @@ const fetchDataissue = async () => {
     <div>
       {data?<></>:<ClayLoadingIndicator className="loginLoader" displayType="primary" shape="squares" size="lg" />}
         <p>Project Board / view Insights</p>
-        <div>
-            <div>
+        <div className='VImain'>
+            <div className='VIhead'>
                 <h1>{curprojects?.projectName}</h1>
                 <h3>Total Number of Issues: {total?.value}</h3>
             </div>
-            <div>
-                <span><h4>TO DO</h4><p>{total?.todo}</p></span>
-                <span><h4>Devlopment</h4><p>{total?.dev}</p></span>
-                <span><h4>Testing</h4><p>{total?.test}</p></span>
-                <span><h4>Completd</h4><p>{total?.complete}</p></span>
+            <div className='VIdata'>
+                <span ><h4>TO DO</h4><p style={{color:"yellow"}}>{total?.todo}</p></span>
+                <span ><h4>Devlopment</h4><p style={{color:"orange"}}>{total?.dev}</p></span>
+                <span ><h4>Testing</h4><p style={{color:"blue"}}>{total?.test}</p></span>
+                <span ><h4>Completed</h4><p style={{color:"green"}}>{total?.complete}</p></span>
+            </div>
+            <div className="VIbar">
+              
             </div>
         </div>
     </div>

@@ -1,0 +1,183 @@
+.issuemaindiv{
+display: flex;
+flex-direction: column;
+
+}
+.IDhead{
+margin-bottom: 1rem;
+}
+
+.IDdisplay{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.left{
+ width: 70%;
+ /* background-color: aqua; */
+ display: flex;
+ flex-direction: column;
+ /* align-items: center; */
+ justify-content: space-evenly;
+ height: 100%;
+
+}
+
+.right{
+    width: 25%;
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    /* background-color: aqua; */
+    height: 15rem;
+}
+.editform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.editform button{
+    color: white;
+    background-color: #1D262D;
+    height: 3rem;
+    width: 12rem;
+    border: 1px solid #1D262D;
+    border-radius: 4px;
+
+}
+.editform select{
+    height: 4rem;
+    width: 12rem;
+    font-size: 24px;
+    text-align: center;
+
+}
+.editform label{
+    font-size: 24px;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+.editform .IDformfeild{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.desc p{
+border: none;
+padding: 1rem 0;
+background-color: #d1dde6;
+}
+.detail{
+    /* line-height: 1rem; */
+
+}
+.subdetails{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 80%;
+justify-content: space-between;
+
+
+
+}
+.subdetails span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    gap: 1rem;
+    font-size: 18px;
+    line-height: 2rem;
+}
+.subdetails  h5,p{
+    font-size: 18px;
+    margin: 0%;
+    padding: 0%;
+}
+.comments{
+margin-top: 1rem;
+}
+.cmt_head{
+display: flex;
+gap: 1rem;
+margin: 2rem 0;
+
+}
+.cmt_head p{
+    color: #FE7912;
+    cursor: pointer;
+    /* height: 1px; */
+}
+.cmt_head span{
+    border: 1px solid #FE7912;
+    /* height: 0px !important; */
+    margin: 0% 5px;
+    padding:0 4px ;
+    width: 3px;
+    
+}
+.addcomment{
+ width: 70%;
+ height: 10rem;
+ /* background-color: antiquewhite; */
+}
+.addcomment textarea{
+    width: 100%;
+    height: 6rem;
+    border: 2px solid #1D262D;
+   border-top:none ;
+   border-left: none;
+   border-right: none;
+    background-color: #F7F8FA;
+    
+}
+.cmtbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+.IDbtns{
+    color: white;
+    background-color: #1D262D;
+    height: 3rem;
+    width: 10rem;
+    border: 1px solid #1D262D;
+    border-radius: 4px;
+}
+.IDbtnr{
+    color: #1D262D;
+    height: 3rem;
+    width: 10rem;
+    border: 1px solid #1D262D;
+    border-radius: 4px;
+
+}
+.cmt{
+    
+    width: 100%;
+    max-height: 30%;
+    overflow-y: auto;
+
+
+}
+.cmtcard{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(237, 237, 238, 0.849);
+    border-radius: 12px;
+
+}
+.cmtcard span{
+    display: flex;
+    font-size: 10px;
+    justify-content: space-evenly;
+    border-bottom:1px solid black;
+    
+}

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import "./CreateProject.css";
 import axios from "axios";
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CreateProject = () => {
@@ -80,6 +80,7 @@ const CreateProject = () => {
   return (
     <div className="CPmain">
       <h1>Create Project</h1>
+      <ToastContainer containerId="notification-container" />
       <form onSubmit={formik.handleSubmit} className="CPform">
       
         

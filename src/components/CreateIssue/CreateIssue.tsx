@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './CreateIssue.css';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CreateIssue = () => {
@@ -139,6 +139,7 @@ const CreateIssue = () => {
   return (
     <div className='CImain'>
       <h1>Create Issue</h1>
+      <ToastContainer containerId="notification-container" />
       <form onSubmit={formik.handleSubmit} className='CIform'>
        
           <div className='CIformfeildtxt'>
